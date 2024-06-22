@@ -24,7 +24,7 @@ function UserPurchases(){
 
         const fetchSalesProducts = async () => {
             try {
-                const response = await api.get('/sales//mypurchases', {
+                const response = await api.get('/sales/mypurchases', {
                     headers: {
                         Authorization: `Bearer ${JSON.parse(token)}`
                     }
