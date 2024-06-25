@@ -91,7 +91,9 @@ function UserPurchases(){
                     </>
                     
                 ) : (
-                    <h1>Carrinho vazio</h1>
+                    <h1>
+                        Você não fez nenhuma venda ainda!
+                    </h1>
                 )}
             </div>
         </section>

@@ -3,6 +3,7 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import styles from "./CartProducts.module.css"
 
+
 function UserProducts(){
 
     const [user, setUSer] = useState({})
@@ -53,7 +54,13 @@ function UserProducts(){
                     </>
                     
                 ) : (
-                    <h1>Carrinho vazio</h1>
+                    <h1>
+                        Você não possue nenhum produto, clique 
+                        <Link to='/product/register' style={{ marginLeft: '10px', marginRight: '10px', fontWeight: 'bold', textDecoration: 'underline' }}>
+                        aqui
+                        </Link> 
+                        para cadastrar novos itens!
+                    </h1>
                 )}
             </div>
         </section>

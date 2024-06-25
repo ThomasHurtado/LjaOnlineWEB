@@ -2,6 +2,7 @@ import api from '../../utils/api'
 import { useEffect, useState } from "react"
 import styles from "./CartProducts.module.css"
 import useFlashMessage from '../../hooks/useFlashMessage'
+import { Link } from "react-router-dom";
 
 
 function UserSales(){
@@ -83,7 +84,13 @@ function UserSales(){
                     </>
                     
                 ) : (
-                    <h1>Você não fez nenhuma compra ainda!</h1>
+                    <h1>
+                        Você não fez nenhuma compra ainda, clique 
+                        <Link to='/home' style={{ marginLeft: '10px', marginRight: '10px', fontWeight: 'bold', textDecoration: 'underline' }}>
+                        aqui
+                        </Link> 
+                        para buscar por produtos!
+                    </h1>
                 )}
             </div>
         </section>
