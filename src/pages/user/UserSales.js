@@ -1,7 +1,6 @@
 import api from '../../utils/api' 
 import { useEffect, useState } from "react"
 import styles from "./CartProducts.module.css"
-import useFlashMessage from '../../hooks/useFlashMessage'
 import { Link } from "react-router-dom";
 
 
@@ -10,7 +9,7 @@ function UserSales(){
     const [products, setProducts] = useState([])
     const [user, setUser] = useState({})
     const [token] = useState(localStorage.getItem('token') || '')
-    const {setFlashMessage} = useFlashMessage()
+    
 
     useEffect (() =>{
         api.get('users/checkuser',{

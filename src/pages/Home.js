@@ -36,7 +36,6 @@ function Home(){
         let msgText = 'Produto adicionado ao carrinho!'
         let msgType = 'success'
         
-        console.log(token)
         try {
             
             const data = await api.patch(`/cart/addproduct/${product._id}`, {

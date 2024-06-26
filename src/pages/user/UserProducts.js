@@ -2,13 +2,14 @@ import api from '../../utils/api'
 import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import styles from "./CartProducts.module.css"
-
+import useFlashMessage from '../../hooks/useFlashMessage'
 
 function UserProducts(){
 
     const [user, setUSer] = useState({})
     const [products, setProducts] = useState([])
     const [token] = useState(localStorage.getItem('token') || '')
+    const {setFlashMessage} = useFlashMessage()
 
     useEffect (() =>{
         api.get('users/checkuser',{
@@ -32,6 +33,37 @@ function UserProducts(){
         })
     }, [token])
 
+    async function handleDeleteProduct(product){
+
+        let msgText = 'Produto deletado com sucesso!'
+        let msgType = 'success'
+        
+        try {
+            
+            const data = await api.delete(`/products/deleteproduct/${product._id}`, {
+                headers: {
+                    Authorization: `Bearer ${JSON.parse(token)}`
+                }
+            }).then((response) =>{
+            return response.data
+            })
+
+        } catch (error) {
+            if (error.response) {
+              msgText = error.response.data.message;
+            } else {
+              msgText = 'Erro desconhecido. Tente novamente mais tarde.';
+            }
+            msgType = 'error';
+            console.log(msgText);
+          }
+
+        setFlashMessage(msgText, msgType)
+
+        window.location.reload()
+
+    }
+
     
 
     return(
@@ -48,7 +80,7 @@ function UserProducts(){
                         <h2>${product.price}</h2>
                         <h2>Estoque: {product.amount}</h2>
                         <Link className={styles.product_button2} to={`/editproduct/${product._id}`}>Editar</Link>
-                        
+                        <button className={styles.product_button2} onClick={() => handleDeleteProduct(product)}>Excluir item</button>
                     </div>
                     ))}
                     </>

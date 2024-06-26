@@ -89,7 +89,7 @@ function CartProducts() {
         }
     }));
 
-    const handleClearCart = (cart) => updateCartAndProducts(() => api.patch(`/cart/clearcart`, {
+    const handleClearCart = () => updateCartAndProducts(() => api.patch(`/cart/clearcart`, {
         headers: {
             Authorization: `Bearer ${JSON.parse(token)}`
         }

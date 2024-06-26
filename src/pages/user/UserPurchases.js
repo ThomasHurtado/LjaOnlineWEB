@@ -1,7 +1,7 @@
 import api from '../../utils/api' 
 import { useEffect, useState } from "react"
 import styles from "./CartProducts.module.css"
-import useFlashMessage from '../../hooks/useFlashMessage'
+
 
 
 function UserPurchases(){
@@ -9,7 +9,7 @@ function UserPurchases(){
     const [products, setProducts] = useState([])
     const [user, setUser] = useState({})
     const [token] = useState(localStorage.getItem('token') || '')
-    const {setFlashMessage} = useFlashMessage()
+    
 
     useEffect (() =>{
         api.get('users/checkuser',{
