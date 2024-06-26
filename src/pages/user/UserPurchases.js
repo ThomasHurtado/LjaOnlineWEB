@@ -69,7 +69,7 @@ function UserPurchases(){
     return(
         
         <section className={styles.productlist_header}>
-            <h1>Carrinho</h1>
+            <h1>Vendas</h1>
             <div className={styles.productlist_container}>
                 {products.length > 0 ? (
                     <>
